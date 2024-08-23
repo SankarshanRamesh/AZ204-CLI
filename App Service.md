@@ -170,7 +170,7 @@ az webapp config appsettings delete --setting-names
                                     [--slot]
                                     [--subscription]
 
-### az webapp config connection-string set
+### Webapp config connection-string set
 az webapp config connection-string set [--connection-string-type {ApiHub, Custom, DocDb, EventHub, MySql, NotificationHub, PostgreSQL, RedisCache, SQLAzure, SQLServer, ServiceBus}]
                                        [--ids]
                                        [--name]
@@ -182,3 +182,32 @@ az webapp config connection-string set [--connection-string-type {ApiHub, Custom
 
 ### Add a mysql connection string.
 az webapp config connection-string set -g MyResourceGroup -n MyUniqueApp -t mysql --settings mysql1='Server=myServer;Database=myDB;Uid=myUser;Pwd=myPwd;'
+
+## Webapp deployment slot
+
+### Swap a staging slot into production
+az webapp deployment slot swap  -g MyResourceGroup -n MyUniqueApp --slot staging --target-slot production
+
+### Deployment slot create
+az webapp deployment slot create --name MyWebapp --resource-group MyResourceGroup --slot staging
+
+### Deployment slot delete
+az webapp deployment slot delete --name MyWebapp --resource-group MyResourceGroup --slot staging
+
+## Webapp log config
+
+### Configure logging for a web app
+az webapp log config [--application-logging {azureblobstorage, filesystem, off}]
+                     [--detailed-error-messages {false, true}]
+                     [--docker-container-logging {filesystem, off}]
+                     [--failed-request-tracing {false, true}]
+                     [--ids]
+                     [--level {error, information, verbose, warning}]
+                     [--name]
+                     [--resource-group]
+                     [--slot]
+                     [--subscription]
+                     [--web-server-logging {filesystem, off}]
+
+### Configure logging for a web app
+az webapp log config --name MyWebapp --resource-group MyResourceGroup --web-server-logging off
