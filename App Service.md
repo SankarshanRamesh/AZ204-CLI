@@ -1,5 +1,5 @@
-# Create resource group, Virtual Network and App Service Environment v3 with default values.
 
+# App Service Environment
 az appservice ase create --name
                          --resource-group
                          --subnet
@@ -19,20 +19,21 @@ az appservice ase create --name
                          [--zone-redundant {false, true}]
 
 
+### Create resource group, Virtual Network and App Service Environment v3 with default values.
 az group create -g MyResourceGroup --location westeurope
 
 az network vnet create -g MyResourceGroup -n MyVirtualNetwork --address-prefixes 10.0.0.0/16 --subnet-name MyAseSubnet --subnet-prefixes 10.0.0.0/24
 
 az appservice ase create -n MyAseName -g MyResourceGroup --vnet-name MyVirtualNetwork --subnet MyAseSubnet --kind asev3
 
-# List app service environments.
+### List app service environments.
 az appservice ase list [--resource-group]
 
-# Show details of an app service environment.
+### Show details of an app service environment.
 az appservice ase show --name
                        [--resource-group]
 
-#Create an app service plan.
+### Create an app service plan.
 az appservice plan create --name
                           --resource-group
                           [--app-service-environment]
@@ -46,36 +47,36 @@ az appservice plan create --name
                           [--tags]
                           [--zone-redundant]
 
-# Create a basic app service plan.
+### Create a basic app service plan.
 az appservice plan create -g MyResourceGroup -n MyPlan
 
-# Create a standard app service plan with four Linux workers.
+### Create a standard app service plan with four Linux workers.
 az appservice plan create -g MyResourceGroup -n MyPlan --is-linux --number-of-workers 4 --sku S1
 
-# Create a Windows container app service plan.
+### Create a Windows container app service plan.
 az appservice plan create -g MyResourceGroup -n MyPlan --hyper-v --sku P1V3
 
-# Create an app service plan for app service environment.
+### Create an app service plan for app service environment.
 az appservice plan create -g MyResourceGroup -n MyPlan --app-service-environment MyAppServiceEnvironment --sku I1
 
-# Delete an app service plan.
+### Delete an app service plan.
 az appservice plan delete [--ids]
                           [--name]
                           [--resource-group]
                           [--subscription]
                           [--yes]
-# List app service plans.
+### List app service plans.
 az appservice plan list [--resource-group]
 
-# Get the app service plans for a resource group or a set of resource groups.
+### Get the app service plans for a resource group or a set of resource groups.
 az appservice plan show [--ids]
                         [--name]
                         [--resource-group]
                         [--subscription]
 
-# az webapp
+# Webapp
 
-# Open a web app in a browser
+### Open a web app in a browser
 az webapp browse [--ids]
                  [--logs]
                  [--name]
@@ -83,7 +84,7 @@ az webapp browse [--ids]
                  [--slot]
                  [--subscription]
 
-# Create a web app.
+### Create a web app.
 az webapp create --name
                  --plan
                  --resource-group
@@ -113,25 +114,25 @@ az webapp create --name
                  [--tags]
                  [--vnet]
 
-# Create a web app with the default configuration.
+### Create a web app with the default configuration.
 az webapp create -g MyResourceGroup -p MyPlan -n MyUniqueAppName
 
-# Create a web app with a NodeJS 10.14 runtime and deployed from a local git repository.
+### Create a web app with a NodeJS 10.14 runtime and deployed from a local git repository.
 az webapp create -g MyResourceGroup -p MyPlan -n MyUniqueAppName --runtime "node:12LTS" --deployment-local-git
 
-# Create a web app with a Java 11 runtime.
+### Create a web app with a Java 11 runtime.
 az webapp create -g MyResourceGroup -p MyPlan -n MyUniqueAppName --runtime "java:11:Java SE:11"
 
-# Create a web app with an image from DockerHub.
+### Create a web app with an image from DockerHub.
 az webapp create -g MyResourceGroup -p MyPlan -n MyUniqueAppName -i nginx
 
-# Create a web app with an image from a private DockerHub registry.
+### Create a web app with an image from a private DockerHub registry.
 az webapp create -g MyResourceGroup -p MyPlan -n MyUniqueAppName -i MyImageName -s username -w password
 
-# Create a web app with an image from a private Azure Container Registry.
+### Create a web app with an image from a private Azure Container Registry.
 az webapp create -g MyResourceGroup -p MyPlan -n MyUniqueAppName -i myregistry.azurecr.io/docker-image:tag
 
-# Delete a web app.
+### Delete a web app.
 az webapp delete [--ids]
                  [--keep-dns-registration]
                  [--keep-empty-plan]
@@ -141,17 +142,17 @@ az webapp delete [--ids]
                  [--slot]
                  [--subscription]
 
-# Deploy a static text file to wwwroot/staticfiles/test.txt
+### Deploy a static text file to wwwroot/staticfiles/test.txt
 az webapp deploy --resource-group ResourceGroup --name AppName --src-path SourcePath --type static --target-path staticfiles/test.txt
 
-# Restart a web app.
+### Restart a web app.
 az webapp restart [--ids]
                   [--name]
                   [--resource-group]
                   [--slot]
                   [--subscription]
 
-# Set a web app's settings.
+### Set a web app's settings.
 az webapp config appsettings set [--ids]
                                  [--name]
                                  [--resource-group]
@@ -159,7 +160,7 @@ az webapp config appsettings set [--ids]
                                  [--slot]
                                  [--slot-settings]
                                  [--subscription]
-# Delete web app settings.
+### Delete web app settings.
 az webapp config appsettings delete --setting-names
                                     [--ids]
                                     [--name]
@@ -167,7 +168,7 @@ az webapp config appsettings delete --setting-names
                                     [--slot]
                                     [--subscription]
 
-# az webapp config connection-string set
+### az webapp config connection-string set
 az webapp config connection-string set [--connection-string-type {ApiHub, Custom, DocDb, EventHub, MySql, NotificationHub, PostgreSQL, RedisCache, SQLAzure, SQLServer, ServiceBus}]
                                        [--ids]
                                        [--name]
@@ -177,5 +178,5 @@ az webapp config connection-string set [--connection-string-type {ApiHub, Custom
                                        [--slot-settings]
                                        [--subscription]
 
-# Add a mysql connection string.
+### Add a mysql connection string.
 az webapp config connection-string set -g MyResourceGroup -n MyUniqueApp -t mysql --settings mysql1='Server=myServer;Database=myDB;Uid=myUser;Pwd=myPwd;'
