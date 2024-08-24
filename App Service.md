@@ -1,26 +1,8 @@
 
 # App Service
 
-### App Service Environment
-az appservice ase create --name
-                         --resource-group
-                         --subnet
-                         [--force-network-security-group {false, true}]
-                         [--force-route-table {false, true}]
-                         [--front-end-scale-factor]
-                         [--front-end-sku {I1, I2, I3}]
-                         [--ignore-network-security-group {false, true}]
-                         [--ignore-route-table {false, true}]
-                         [--ignore-subnet-size-validation {false, true}]
-                         [--kind {ASEv2, ASEv3}]
-                         [--location]
-                         [--no-wait]
-                         [--os-preference {Linux, Windows}]
-                         [--virtual-ip-type {External, Internal}]
-                         [--vnet-name]
-                         [--zone-redundant {false, true}]
-
-
+## App Service Environment
+                
 ### Create resource group, Virtual Network and App Service Environment v3 with default values.
 az group create -g MyResourceGroup --location westeurope
 
@@ -34,20 +16,6 @@ az appservice ase list [--resource-group]
 ### Show details of an app service environment.
 az appservice ase show --name
                        [--resource-group]
-
-### Create an app service plan.
-az appservice plan create --name
-                          --resource-group
-                          [--app-service-environment]
-                          [--hyper-v]
-                          [--is-linux]
-                          [--location]
-                          [--no-wait]
-                          [--number-of-workers]
-                          [--per-site-scaling]
-                          [--sku {B1, B2, B3, D1, F1, FREE, I1, I1MV2, I1V2, I2, I2MV2, I2V2, I3, I3MV2, I3V2, I4MV2, I4V2, I5MV2, I5V2, I6V2, P0V3, P1MV3, P1V2, P1V3, P2MV3, P2V2, P2V3, P3MV3, P3V2, P3V3, P4MV3, P5MV3, S1, S2, S3, SHARED, WS1, WS2, WS3}]
-                          [--tags]
-                          [--zone-redundant]
 
 ### Create a basic app service plan.
 az appservice plan create -g MyResourceGroup -n MyPlan
