@@ -240,3 +240,6 @@ az webapp config connection-string set [--connection-string-type {ApiHub, Custom
 
 ### Add a mysql connection string.
 az webapp config connection-string set -g MyResourceGroup -n MyUniqueApp -t mysql --settings mysql1='Server=myServer;Database=myDB;Uid=myUser;Pwd=myPwd;'
+
+### Webapp scale
+az webapp scale -g MyResourceGroup -n MyApp --instance-count 2
